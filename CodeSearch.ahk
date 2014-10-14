@@ -10,13 +10,15 @@
 		- Add case sensitive search
 		- Add whole word search
 		- Save and populate previous directory
+		- Account for additional extensions
+		- Possibly add an extension manager?
 */
 
 Gui, Color, White
 Gui, Font, s11, Segoe UI Light
 Gui, Add, Text,, % "Initial Directory:"
 Gui, Add, Edit, Section w300 vtxtInitialDirectory
-Gui, Add, Button, hp+1 w40 ys-1 vbtnDirectoryBrowse, % "..."
+Gui, Add, Button, hp+1 w40 ys-1 gbtnDirectoryBrowse_Click vbtnDirectoryBrowse, % "..."
 Gui, Add, Text, xm, % "String to search for:"
 Gui, Add, Edit, Section w300 vtxtSearchString
 Gui, Add, Button, ys-1 hp+1 vbtnSearch gbtnSearch_Click, % "Search"
@@ -39,6 +41,12 @@ Gui, Add, ListView, xm w1000 r20 vlvResults, % "File|Line Text|Line #|Position"
 Gui, Show, AutoSize Center, Code Search
 return
 
+btnDirectoryBrowse_Click:
+{
+	Gui, Submit, NoHide
+	FileSelectFolder, targetDir, *C:\, 3, % "Select a starting directory."
+	return
+}
 
 btnSearch_Click:
 {
