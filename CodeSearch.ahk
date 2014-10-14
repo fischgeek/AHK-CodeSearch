@@ -13,7 +13,7 @@
 */
 
 Gui, Color, White
-Gui, Font, s11, Consolas
+Gui, Font, s11, Segoe UI Light
 Gui, Add, Text,, % "Initial Directory:"
 Gui, Add, Edit, Section w300 vtxtInitialDirectory
 Gui, Add, Button, hp+1 w40 ys-1 vbtnDirectoryBrowse, % "..."
@@ -34,6 +34,7 @@ Gui, Add, Checkbox, ys vcbxTxt, % ".txt"
 Gui, Add, Text, xs, % "Additional extension (ex. xml,cs,aspx)"
 Gui, Add, Edit, w300 vtxtAdditionalExtensions
 
+Gui, Font, s11, Consolas
 Gui, Add, ListView, xm w1000 r20 vlvResults, % "File|Line Text|Line #|Position"
 Gui, Show, AutoSize Center, Code Search
 return
@@ -45,9 +46,9 @@ btnSearch_Click:
 	LV_Delete()
 	keyword := txtSearchString
 	extensions := getExtensions()
-    recurse := 0
-    if (cbxRecurse)
-    	recurse := 1
+	recurse := 0
+	if (cbxRecurse)
+		recurse := 1
     SetWorkingDir, %txtInitialDirectory%
 	Loop, *.*,, %recurse%
 	{
