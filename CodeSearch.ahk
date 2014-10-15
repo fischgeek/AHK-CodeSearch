@@ -87,13 +87,8 @@ btnSearch_Click:
 lvResults_Click:
 {
 	Gui, Submit, NoHide
-	; grab the starting directory from the UI
 	dir := txtInitialDirectory
-	
-	; grab the rest of the path to the file (including the file's name and extension)(column 1)
 	LV_GetText(fileName, A_EventInfo)
-	
-	; run the file in edit mode
 	Run Edit %dir%\%fileName%
 	return
 }
