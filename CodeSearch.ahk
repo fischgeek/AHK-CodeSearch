@@ -1,6 +1,5 @@
 /*
 	TODO:
-		- Get browse button working
 		- Add ability to double-click open a file to that line number
 		- Add progress bar
 		- Add file path to listview results
@@ -45,6 +44,12 @@ btnDirectoryBrowse_Click:
 {
 	Gui, Submit, NoHide
 	FileSelectFolder, targetDir, *C:\, 3, % "Select a starting directory."
+	if (ErrorLevel) {
+		return
+	}
+	if (targetDir != "") {
+		GuiControl,, txtInitialDirectory, %targetDir%
+	}
 	return
 }
 
