@@ -36,7 +36,7 @@ Gui, Add, Checkbox, ys vcbxTxt, % ".txt"
 Gui, Add, Text, xs, % "Additional extension (ex. xml,cs,aspx)"
 Gui, Add, Edit, w300 vtxtAdditionalExtensions
 Gui, Font, s11, Consolas
-Gui, Add, ListView, xm w1000 r20 vlvResults, % "File|Line Text|Line #|Position"
+Gui, Add, ListView, xm w1000 r20 glvResults_Click vlvResults, % "File|Line Text|Line #|Position"
 Gui, Show, AutoSize Center, Code Search
 return
 
@@ -81,6 +81,20 @@ btnSearch_Click:
 			}
 		}
 	}
+	return
+}
+
+lvResults_Click:
+{
+	Gui, Submit, NoHide
+	; grab the starting directory from the UI
+	dir := txtInitialDirectory
+	
+	; grab the rest of the path to the file (including the file's name and extension)(column 1)
+	LV_GetText(fileName, A_EventInfo)
+	
+	; run the file in edit mode
+	Run Edit %dir%\%fileName%
 	return
 }
 
