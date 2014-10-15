@@ -2,7 +2,6 @@
 	TODO:
 		- Add ability to double-click open a file to that line number
 		- Add progress bar
-		- Add file path to listview results
 		- Add right-click context menu
 			- Add option to open file location
 		- Add Anchor()
@@ -12,6 +11,8 @@
 		- Account for additional extensions
 		- Possibly add an extension manager?
 		- Find an icon
+		- Add pre-search checks (extension selection, directory)
+		- Add finished notification (statusbar?)
 */
 
 Gui, Color, White
