@@ -11,6 +11,7 @@
 		- Save and populate previous directory
 		- Account for additional extensions
 		- Possibly add an extension manager?
+		- Find an icon
 */
 
 Gui, Color, White
@@ -24,7 +25,6 @@ Gui, Add, Button, ys-1 hp+1 vbtnSearch gbtnSearch_Click, % "Search"
 Gui, Add, Checkbox, Section xm w30 h30 0x1000 vcbxRecurse, % "R"
 Gui, Add, Checkbox, ys wp hp 0x1000 vcbxWholeWord, % "W"
 Gui, Add, Checkbox, ys wp hp 0x1000 vcbxCase, % "C"
-
 Gui, Add, GroupBox, ym w500 h120, % "File Types"
 Gui, Add, Checkbox, yp+30 xp+15 Section vcbxAhk, % ".ahk"
 Gui, Add, Checkbox, ys vcbxHtml, % ".html"
@@ -34,7 +34,6 @@ Gui, Add, Checkbox, ys vcbxIni, % ".ini"
 Gui, Add, Checkbox, ys vcbxTxt, % ".txt"
 Gui, Add, Text, xs, % "Additional extension (ex. xml,cs,aspx)"
 Gui, Add, Edit, w300 vtxtAdditionalExtensions
-
 Gui, Font, s11, Consolas
 Gui, Add, ListView, xm w1000 r20 vlvResults, % "File|Line Text|Line #|Position"
 Gui, Show, AutoSize Center, Code Search
