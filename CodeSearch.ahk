@@ -20,7 +20,7 @@ config := new Config()
 Gui, Color, White
 Gui, Font, s11, Segoe UI Light
 Gui, Add, Text,, % "Initial Directory:"
-Gui, Add, Edit, Section w300 vtxtInitialDirectory, % config.getValue("LastDir") ? config.getValue("LastDir") : ""
+Gui, Add, Edit, Section w300 h27 -Wrap vtxtInitialDirectory, % config.getValue("LastDir") ? config.getValue("LastDir") : ""
 Gui, Add, Button, hp+1 w40 ys-1 gbtnDirectoryBrowse_Click vbtnDirectoryBrowse, % "..."
 Gui, Add, Text, xm, % "String to search for:"
 Gui, Add, Edit, Section w300 vtxtSearchString
