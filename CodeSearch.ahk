@@ -5,7 +5,6 @@
 		- Add right-click context menu
 			- Add option to open file location
 		- Add Anchor()
-		- Add case sensitive search
 		- Add whole word search
 		- Account for additional extensions
 		- Possibly add an extension manager?
@@ -76,7 +75,7 @@ btnSearch_Click:
 		Loop, Read, %file%
 		{
 			line := A_LoopReadLine
-			RegExMatch(line, "O)" keyword, obj)
+			RegExMatch(line, getRegExOptions() keyword, obj)
 			if (obj.Len() > 0) {
 				LV_Add("", file, truncate(line), A_Index, obj.Pos())
 				;~ msgbox, % "Found a match on line: " A_Index "`nIn file: " file "`n`n" line
@@ -131,4 +130,12 @@ getExtensions() {
 		e .= "js,"
 	StringTrimRight, e, e, 1
 	return e
+}
+getRegExOptions() {
+	global
+	options := "O" ; return regex match result as an object
+	if (!cbxCase) {
+		options := options "i" ; incase sensitive searching
+	}
+	return options ")"
 }
