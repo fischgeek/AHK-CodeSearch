@@ -7,7 +7,6 @@
 		- Add Anchor()
 		- Add case sensitive search
 		- Add whole word search
-		- Save and populate previous directory
 		- Account for additional extensions
 		- Possibly add an extension manager?
 		- Find an icon
@@ -15,10 +14,13 @@
 		- Add finished notification (statusbar?)
 */
 
+#Include Classes/Config.ahk
+config := new Config()
+
 Gui, Color, White
 Gui, Font, s11, Segoe UI Light
 Gui, Add, Text,, % "Initial Directory:"
-Gui, Add, Edit, Section w300 vtxtInitialDirectory
+Gui, Add, Edit, Section w300 vtxtInitialDirectory, % config.getValue("LastDir") ? config.getValue("LastDir") : ""
 Gui, Add, Button, hp+1 w40 ys-1 gbtnDirectoryBrowse_Click vbtnDirectoryBrowse, % "..."
 Gui, Add, Text, xm, % "String to search for:"
 Gui, Add, Edit, Section w300 vtxtSearchString
@@ -49,6 +51,7 @@ btnDirectoryBrowse_Click:
 	}
 	if (targetDir != "") {
 		GuiControl,, txtInitialDirectory, %targetDir%
+		config.setValue(targetDir, "LastDir")
 	}
 	return
 }
