@@ -135,7 +135,7 @@ getRegExOptions() {
 	global
 	options := "O" ; return regex match result as an object
 	if (!cbxCase) {
-		options := options "i" ; incase sensitive searching
+		options := options "i" ; case sensitive searching
 	}
 	return options ")"
 }
