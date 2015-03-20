@@ -75,7 +75,7 @@ btnSearch_Click:
 		Loop, Read, %file%
 		{
 			line := A_LoopReadLine
-			RegExMatch(line, getRegExOptions() keyword, obj)
+			RegExMatch(line, getRegExOptions() getExpression(keyword), obj)
 			if (obj.Len() > 0) {
 				LV_Add("", file, truncate(line), A_Index, obj.Pos())
 				;~ msgbox, % "Found a match on line: " A_Index "`nIn file: " file "`n`n" line
@@ -130,6 +130,15 @@ getExtensions() {
 		e .= "js,"
 	StringTrimRight, e, e, 1
 	return e
+}
+getExpression(keyword) {
+	global
+	if (cbxWholeWord) {
+		expression := "[\s|\W]?" keyword "[\s|\W]"
+	} else {
+		expression := keyword
+	}
+	return expression
 }
 getRegExOptions() {
 	global
