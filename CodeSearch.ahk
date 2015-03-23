@@ -5,12 +5,12 @@
 		- Add right-click context menu
 			- Add option to open file location
 		- Add Anchor()
-		- Add whole word search
 		- Account for additional extensions
 		- Possibly add an extension manager?
 		- Find an icon
 		- Add pre-search checks (extension selection, directory)
 		- Add finished notification (statusbar?)
+		- Add auto saving of selected options and filters
 */
 
 #Include Classes/Config.ahk
